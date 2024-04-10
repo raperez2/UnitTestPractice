@@ -20,3 +20,38 @@ TEST(PasswordTest, single_letter_password)
 	int actual = my_password.count_leading_characters("Z");
 	ASSERT_EQ(1, actual);
 }
+
+TEST(PasswordTest, multi_letter_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("aaaaa");
+	ASSERT_EQ(5, actual);
+}
+
+TEST(PasswordTest, single_num_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("1");
+	ASSERT_EQ(5, actual);
+}
+
+TEST(PasswordTest, multi_num_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("1111");
+	ASSERT_EQ(5, actual);
+}
+
+TEST(PasswordTest, single_symbol_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("?");
+	ASSERT_EQ(5, actual);
+}
+
+TEST(PasswordTest, multi_symbol_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("!!!!");
+	ASSERT_EQ(5, actual);
+}
