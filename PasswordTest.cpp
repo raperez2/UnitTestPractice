@@ -62,3 +62,11 @@ TEST(PasswordTest, mix_variables_password)
 	int actual = my_password.count_leading_characters("aa3!!!");
 	ASSERT_EQ(2, actual);
 }
+
+TEST(PasswordTest, empty_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("");
+	ASSERT_EQ(0, actual);
+}
+
