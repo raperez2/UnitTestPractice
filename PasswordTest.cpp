@@ -73,27 +73,27 @@ TEST(PasswordTest, empty_password)
 TEST(PasswordTest, mixed_case_caps)
 {
 	Password my_password;
-	int actual = my_password.has_mixed_case("AAAA");
-	ASSERT_EQ(0, actual);
+	bool actual = my_password.has_mixed_case("AAAAAAAAA");
+	ASSERT_EQ(false, actual);
 }
 
 TEST(PasswordTest, mixed_case_lower)
 {
 	Password my_password;
-	int actual = my_password.has_mixed_case("aaaa");
-	ASSERT_EQ(0, actual);
+	bool actual = my_password.has_mixed_case("aaaaaaa");
+	ASSERT_EQ(false, actual);
 }
 
 TEST(PasswordTest, mixed_case_symb)
 {
 	Password my_password;
-	int actual = my_password.has_mixed_case("!!!!!!!");
-	ASSERT_EQ(0, actual);
+	bool actual = my_password.has_mixed_case("!!!!!!!");
+	ASSERT_EQ(false, actual);
 }
 
 TEST(PasswordTest, mixed_case_long)
 {
 	Password my_password;
-	int actual = my_password.has_mixed_case("AAAaAa");
-	ASSERT_EQ(1, actual);
+	bool actual = my_password.has_mixed_case("AZBaAM");
+	ASSERT_EQ(true, actual);
 }
