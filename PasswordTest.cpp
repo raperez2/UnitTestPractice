@@ -59,7 +59,7 @@ TEST(PasswordTest, multi_symbol_password)
 TEST(PasswordTest, mix_variables_password)
 {
 	Password my_password;
-	int actual = my_password.count_leading_characters("aa3!!!");
+	int actual = my_password.count_leading_characters("a3!a!!");
 	ASSERT_EQ(2, actual);
 }
 
@@ -70,3 +70,30 @@ TEST(PasswordTest, empty_password)
 	ASSERT_EQ(0, actual);
 }
 
+TEST(PasswordTest, mixed_case_caps)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("AAAA");
+	ASSERT_EQ(0, actual);
+}
+
+TEST(PasswordTest, mixed_case_lower)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("aaaa");
+	ASSERT_EQ(0, actual);
+}
+
+TEST(PasswordTest, mixed_case_symb)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("!!!!!!!");
+	ASSERT_EQ(0, actual);
+}
+
+TEST(PasswordTest, mixed_case_long)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("AAAaAa");
+	ASSERT_EQ(1, actual);
+}
