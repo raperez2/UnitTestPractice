@@ -59,7 +59,7 @@ TEST(PasswordTest, multi_symbol_password)
 TEST(PasswordTest, mix_variables_password)
 {
 	Password my_password;
-	int actual = my_password.count_leading_characters("a3!a!!");
+	int actual = my_password.count_leading_characters("aa3!!!");
 	ASSERT_EQ(2, actual);
 }
 
@@ -95,5 +95,13 @@ TEST(PasswordTest, mixed_case_long)
 {
 	Password my_password;
 	bool actual = my_password.has_mixed_case("AZBaAM");
+	ASSERT_EQ(true, actual);
+}
+
+TEST(PasswordTest, set_and_authenticate)
+{
+	Password my_password;
+	my_password.set("Testing123");
+	bool actual = my_password.authenticate("Testing123");
 	ASSERT_EQ(true, actual);
 }
